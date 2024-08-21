@@ -1,2 +1,6 @@
-# cnc
-CNC stuff
+# CNC
+
+## hobby CNC related stuff
+
+
+
