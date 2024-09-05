@@ -58,6 +58,13 @@ def cncCutLine(x1, y1, x2, y2, cutDepth):
   cncCutPath(x2, y2)
   cncLiftTool()
 
+def cncCutLines(points, cutDepth):
+  cncMoveTool(points[0][0], points[0][1])
+  cncLowerTool(cutDepth)
+  for p in points:
+    cncCutPath(p[0], p[1])
+  cncLiftTool()
+
 def cncCutInsideRectangle(x, y, width, height, toolWidth, cutDepth):
   x1 = x + (toolWidth / 2.0)
   y1 = y + (toolWidth / 2.0)
