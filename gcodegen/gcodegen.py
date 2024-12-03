@@ -1,3 +1,5 @@
+from datetime import datetime
+
 cncVarFeedRate = 20
 cncVarMoveRate = 200
 cncVarToolParkHeight = 1
@@ -8,6 +10,7 @@ def cncStr(n):
 
 def cncHeader():
   print("(cnc g code generator by kvp in 2024)")
+  print("(" + datetime.now().strftime("%Y-%m-%dT%H:%M:%S") + ")")
   print("G21 G17 G90 F100") # metric (1 mm unit)
   print("G10 P0 L20 X0 Y0 Z" + cncStr(cncVarToolParkHeight)) # reset coordinates
   print("G00 Z" + cncStr(cncVarToolLiftHeight) + " F" + cncStr(cncVarMoveRate)) # lift the tool from the calibration point

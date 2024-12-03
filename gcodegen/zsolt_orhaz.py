@@ -39,12 +39,15 @@ for z in (0.5, 1.0):
 for z in (0.5, 1.0):
 	g.cncCutInsideRectangle(B3X+30-8-3.1/2,15+3-4.7, 3.1,4.7, ToolWidth, z)
 
-g.cncCutOutsideRectangle(B0X, 0, WallW, WallH, ToolWidth, 0.7)
-g.cncCutOutsideRectangle(B1X, 0, WallW, WallH, ToolWidth, 0.7)
-g.cncCutOutsideRectangle(B2X, 0, WallW, WallH, ToolWidth, 0.7)
-g.cncCutOutsideRectangle(B3X, 0, WallW, WallH, ToolWidth, 0.7)
+for z in (0.5, 0.9):
+	g.cncCutOutsideRectangle(B0X, 0, WallW, WallH, ToolWidth, z)
+for z in (0.5, 0.9):
+	g.cncCutOutsideRectangle(B1X, 0, WallW, WallH, ToolWidth, z)
+for z in (0.5, 0.9):
+	g.cncCutOutsideRectangle(B2X, 0, WallW, WallH, ToolWidth, z)
+for z in (0.5, 0.9):
+	g.cncCutOutsideRectangle(B3X, 0, WallW, WallH, ToolWidth, z)
 
-"""
 # ajto 2
 for z in (0.2, 0.4, 0.6, 0.8, 1.0):
 	g.cncCutInsideRectangle((4+1), (1+6), 2,2, ToolWidth, z);
@@ -59,11 +62,20 @@ g.cncCutOutsideRectangle(4,1, 7,15, ToolWidth, 0.3);
 g.cncCutOutsideRectangle(3,0, 9,17, ToolWidth, 0.4);
 g.cncCutOutsideRectangle(3,0, 9,17, ToolWidth, 0.9);
 #g.cncCutOutsideRectangle(3,0, 9,17, ToolWidth, 1.1);
-"""
+
 """
 # teto
-g.cncCutOutsideRectangle(3,3, 38,38, ToolWidth, 0.3);
-g.cncCutOutsideRectangle(2,2, 40,40, ToolWidth, 0.5);
-g.cncCutOutsideRectangle(2,2, 40,40, ToolWidth, 1.0);
+#g.cncCutOutsideRectangle(3,3, 38,38, ToolWidth, 0.3);
+for z in (0.5, 1.0):
+	g.cncCutOutsideRectangle(2,2, 40,40, ToolWidth, z);
 """
+"""
+# kis ablakkeretek
+for z in (0.2, 0.4, 0.6, 0.8, 1.0):
+	g.cncCutInsideRectangle(3.5,3.5, 3.1-1,4.7-1, ToolWidth, z)
+g.cncCutOutsideRectangle(3,3, 3.1,4.7, ToolWidth, 0.4)
+g.cncCutOutsideRectangle(2,2, 5.1,6.7, ToolWidth, 0.5)
+g.cncCutOutsideRectangle(2,2, 5.1,6.7, ToolWidth, 1.0)
+"""
+
 g.cncPark()
