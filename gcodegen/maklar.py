@@ -9,6 +9,8 @@ g.cncHeader()
 
 zList = (0.3, 0.6, 1.0)
 
+# MAIN WALLS:
+
 #XB = 1
 #YB = 1
 #for z in zList:
@@ -59,13 +61,41 @@ zList = (0.3, 0.6, 1.0)
 
 TW = ToolWidth / 2
 
+# END WALLS:
+
+#hh = 10
+
+#for z in zList:
+#	g.cncCutInsideRectangle(10,hh, 8,10, ToolWidth, z)
+
+#for z in zList:
+#	g.cncCutInsideRectangle(10,hh-10, 6,12, ToolWidth, z)
+#	g.cncCutInsideRectangle(10+6+5,hh, 8,10, ToolWidth, z)
+#	g.cncCutInsideRectangle(10+6+5+8+3,hh+5, 6,5, ToolWidth, z)
+
+#for z in zList:
+#	g.cncCutLine(-TW,-TW,            42+TW,-TW, z)
+#	g.cncCutLine(42+TW,-TW,          42+TW,hh+15+TW, z)
+#	g.cncCutLine(42+TW,hh+15+TW,     42-8.75,hh+8.75+15, z)
+#	g.cncCutLine(42-8.75,hh+15+8.75, 21,hh+40+TW, z)
+#	g.cncCutLine(21,hh+40+TW,        8.75,hh+15+8.75, z)
+#	g.cncCutLine(8.75,hh+15+8.75,    0-TW,hh+15+TW, z)
+#	g.cncCutLine(0-TW,hh+15+TW,      -TW,-TW, z)
+
+# ADDED:
+
+#for z in zList:
+#	g.cncCutInsideRectangle(10,8, 8,10, ToolWidth, z)
+#for z in zList:
+#	g.cncCutOutsideRectangle(0,0, 28,20, ToolWidth, z)
+
 for z in zList:
-	g.cncCutLine(-TW,-TW, 42+TW,-TW, z)
-	g.cncCutLine(42+TW,-TW, 42+TW,15+TW, z)
-	g.cncCutLine(42+TW,15+TW, 42-8.75, 8.75+15, z)
-	g.cncCutLine(42-8.75,15+8.75, 21,40+TW, z)
-	g.cncCutLine(21,40+TW, 8.75,15+8.75, z)
-	g.cncCutLine(8.75,15+8.75, 0-TW,15+TW, z)
-	g.cncCutLine(0-TW,15+TW, -TW,-TW, z)
+	g.cncCutLine(TW,10+TW, TW,22+TW, z)
+for z in zList:
+	g.cncCutLine(22,20+TW, 0,22+TW, z)
+#for z in zList:
+#	g.cncCutInsideRectangle(8,3, 6,12, ToolWidth, z)
+for z in zList:
+	g.cncCutOutsideRectangle(0,0, 21,22, ToolWidth, z)
 
 g.cncPark()
