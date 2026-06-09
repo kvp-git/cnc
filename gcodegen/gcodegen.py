@@ -21,12 +21,15 @@ def cncPark():
   print("G00 Z" + cncStr(cncVarToolParkHeight) +" F" + cncStr(cncVarMoveRate))
 
 def cncSetFeedRate(feedRate):
-  cncVarFeedrate = feedRate
+  global cncVarFeedRate
+  cncVarFeedRate = feedRate
 
 def cncSetMoveRate(moveRate):
+  global cncVarMoveRate
   cncVarMoveRate = moveRate
 
 def cncSetToolLiftHeight(height):
+  global cncVarToolLiftHeight
   cncVarToolLiftHeight = height
 
 def cncMoveTool(x, y):
@@ -114,6 +117,25 @@ def cncCutPlane(x, y, width, height, toolWidth, cutDepth):
       break;
     print("G01 X" + cncStr(x1) + " Y" + cncStr(y1) + " F" + cncStr(cncVarFeedRate))
   cncLiftTool()
+
+def cncCutInsideCircle(x, y, radius, toolWidth, cutDepth):
+  r = radius - (toolWidth / 2)
+  cncMoveTool(x, y)
+  cncLowerTool(cutDepth)
+  cncCutPath(x, y - r)
+  print("G03 X" + cncStr(x) + " Y" + cncStr(y + r) +" R" + cncStr(r))
+  print("G03 X" + cncStr(x) + " Y" + cncStr(y - r) +" R" + cncStr(r))
+  cncCutPath(x, y)
+  cncLiftTool()
+
+def cncCutOutsideCircle(x, y, radius, toolWidth, cutDepth):
+  r = radius + (toolWidth / 2)
+  cncMoveTool(x, y - r)
+  cncLowerTool(cutDepth)
+  print("G02 X" + cncStr(x) + " Y" + cncStr(y + r) +" R" + cncStr(r))
+  print("G02 X" + cncStr(x) + " Y" + cncStr(y - r) +" R" + cncStr(r))
+  cncLiftTool()
+  cncMoveTool(x, y)
 
 #cncHeader()
 
